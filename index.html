@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="红车">
+<meta name="theme-color" content="#bde4f4">
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; media-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'">
+<title>红车比赛 · Picture book (draft)</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg">
+<link rel="apple-touch-icon" href="icon.svg">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!-- Parent setup (English only) -->
+<section id="setup" class="screen active" aria-label="Parent setup">
+  <div class="setup-card">
+    <h1>Mandarin picture book</h1>
+    <p class="sub">Story 1: <b lang="zh-CN">红车比赛</b> (the red car race) · <span class="draft">v1.1 text, Coach approved 25 Oct 2026</span></p>
+    <div class="row">
+      <label>Hero name (Chinese characters, first name only)
+        <input id="cfgName" lang="zh-CN" maxlength="4" autocomplete="off" value="小杰"></label>
+      <label>Pinyin shown above it
+        <input id="cfgPy" maxlength="20" autocomplete="off" value="Xiǎojié"></label>
+    </div>
+    <div class="voicebox">
+      <b>Voice</b>
+      <p id="voiceInfo">Checking for a Mandarin voice…</p>
+      <p class="note">For now every line is read by the iPad's own Mandarin voice (free, works offline). Later we can swap in recorded clips (Mum's voice or a studio voice) without changing the story. Recorded clips: <b id="clipCount">0</b>.</p>
+      <div class="row">
+        <button id="testVoice" class="btn ghost">Test voice</button>
+        <label class="inline check"><span><input type="checkbox" id="cfgShowPy"> Show pinyin</span><small>Off by default (Coach). Small pinyin above the characters.</small></label>
+        <label class="inline">At the end, send him to tell
+          <select id="cfgPerson"></select></label>
+        <label class="inline">Reading speed
+          <select id="cfgRate"><option value="0.7">Slower</option><option value="0.8" selected>Gentle</option><option value="0.95">Normal</option></select></label>
+      </div>
+    </div>
+    <ul class="tips">
+      <li>Sit beside him with the sound on (silent switch off) and the iPad sideways.</li>
+      <li>Speech-bubble moments: the book asks a question and waits. Let him answer you, then tap the ▶ button. Nothing is recorded or scored.</li>
+      <li>One story, then it stops. The last line sends him to tell a real person (you choose who above) about the story. To come back here, press and hold the house button for 1 second.</li>
+    </ul>
+    <button id="startBtn" class="btn start">Start the story</button>
+  </div>
+</section>
+
+<!-- Story (Mandarin only) -->
+<section id="story" class="screen" aria-label="故事">
+  <div id="scene"></div>
+  <button id="homeBtn" class="corner left" aria-label="home (press and hold)">
+    <svg viewBox="0 0 48 48"><path d="M8 24 L24 9 L40 24 M13 21 V39 H35 V21" fill="none" stroke="#334" stroke-width="4" stroke-linejoin="round"/></svg>
+    <svg class="ring" viewBox="0 0 60 60"><circle cx="30" cy="30" r="27"/></svg>
+  </button>
+  <button id="replayBtn" class="corner right" aria-label="再听一次">
+    <svg viewBox="0 0 48 48"><path d="M8 18 H16 L26 9 V39 L16 30 H8 Z" fill="#334"/><path d="M32 16 Q38 24 32 32 M36 11 Q46 24 36 37" fill="none" stroke="#334" stroke-width="4" stroke-linecap="round"/></svg>
+  </button>
+  <div id="pageDots" aria-hidden="true"></div>
+  <div id="panel">
+    <p id="sentence" lang="zh-CN"></p>
+    <div id="actions"></div>
+  </div>
+  <div id="wordCard" lang="zh-CN" aria-live="polite"></div>
+</section>
+
+<!-- Calm ending -->
+<section id="ending" class="screen" aria-label="完">
+  <div id="endScene"></div>
+  <div class="end-text" lang="zh-CN"><ruby>完<rt>wán</rt></ruby></div>
+  <button id="homeBtn2" class="corner left" aria-label="home (press and hold)">
+    <svg viewBox="0 0 48 48"><path d="M8 24 L24 9 L40 24 M13 21 V39 H35 V21" fill="none" stroke="#334" stroke-width="4" stroke-linejoin="round"/></svg>
+    <svg class="ring" viewBox="0 0 60 60"><circle cx="30" cy="30" r="27"/></svg>
+  </button>
+</section>
+
+<div id="rotate" aria-hidden="true"><svg viewBox="0 0 120 120"><rect x="38" y="20" width="44" height="74" rx="6" fill="none" stroke="#fff" stroke-width="5"/><path d="M20 90 Q20 108 44 108" fill="none" stroke="#fff" stroke-width="5"/><path d="M38 102 L46 108 L38 114" fill="none" stroke="#fff" stroke-width="5"/></svg></div>
+
+<script src="audio/manifest.js"></script>
+<script src="js/story.js"></script>
+<script src="js/lines.js"></script>
+<script src="js/art.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

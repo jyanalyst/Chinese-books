@@ -1,0 +1,3 @@
+{ "name": "红车比赛", "short_name": "红车", "start_url": "./index.html", "display": "standalone",
+  "orientation": "landscape", "background_color": "#bde4f4", "theme_color": "#bde4f4",
+  "icons": [ { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml" } ] }
