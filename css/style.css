@@ -132,3 +132,7 @@ body.hide-py #wordCard .py { display: none; }
 .end-text rt { color: #fffdf6; }
 #ending { background: #f6e7c8; }
 #ending .corner { background: #ffffffcc; }
+/* v1.5: back to Little Garage, only when opened from it; hidden while the story pages are on screen */
+#garageBack { position: fixed; right: 16px; bottom: max(16px, env(safe-area-inset-bottom)); z-index: 6; padding: 14px 22px; border-radius: 30px;
+  background: #ffffffe6; color: #334; font-size: 24px; font-weight: 700; text-decoration: none; box-shadow: 0 2px 8px rgba(0,0,0,.15); }
+body.in-story #story.active ~ #garageBack { display: none; }

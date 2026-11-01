@@ -211,6 +211,15 @@
     navigator.serviceWorker.register("sw.js").catch(function () {});
   }
 
+  // v1.5: opened from Little Garage (?from=garage&back=<same-site url>): a small 🚗 button back to it, on the setup and 完 screens only
+  (function () {
+    var q = /[?&]from=garage(&|$)/.test(location.search) && /[?&]back=([^&]*)/.exec(location.search);
+    if (!q) return;
+    try { var u = new URL(decodeURIComponent(q[1]), location.href); if (u.origin !== location.origin) return; } catch (e) { return; }
+    var a = document.createElement("a"); a.id = "garageBack"; a.href = u.href; a.textContent = "🚗 小车库"; a.setAttribute("aria-label", "Back to Little Garage");
+    document.body.appendChild(a);
+  })();
+
   // hooks for automated tests
   window.__book = { goto: goto, get pid() { return pid; }, get state() { return state; }, get history() { return history.slice(); }, cfg: cfg, home: goHome };
   syncPerson(); applyPinyin();
